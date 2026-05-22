@@ -1,0 +1,115 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import onboarding from '../../assets/screenshot/onboarding-01.png';
+import workoutBuilder from '../../assets/screenshot/workout-builder-01.png';
+import workoutSession from '../../assets/screenshot/workout-session-01.png';
+import restTimer from '../../assets/screenshot/rest-timer-01.png';
+import nutritionLog from '../../assets/screenshot/nutrition-log-01.png';
+import progressCharts from '../../assets/screenshot/progress-charts-01.png';
+import settingsProfile from '../../assets/screenshot/settings-profile-01.png';
+
+const shots = [
+	{ src: onboarding, alt: 'WeFitNest onboarding screenshot placeholder showing the setup flow', title: 'Onboarding' },
+	{ src: workoutBuilder, alt: 'WeFitNest workout builder screenshot placeholder showing exercise planning', title: 'Workout Builder' },
+	{ src: workoutSession, alt: 'WeFitNest in-session workout screenshot placeholder showing the current workout', title: 'Workout Session' },
+	{ src: restTimer, alt: 'WeFitNest rest timer screenshot placeholder showing pacing support', title: 'Rest Timer' },
+	{ src: nutritionLog, alt: 'WeFitNest nutrition logging screenshot placeholder showing meal tracking', title: 'Nutrition Log' },
+	{ src: progressCharts, alt: 'WeFitNest progress charts screenshot placeholder showing trend analytics', title: 'Progress Charts' },
+	{ src: settingsProfile, alt: 'WeFitNest profile and settings screenshot placeholder showing account controls', title: 'Settings' },
+];
+---
+
+<section id="screenshots" class="section-block screenshots-block" aria-labelledby="screenshots-title">
+	<SectionHeader
+		kicker="Visual proof"
+		title="Show the product, not just the promise."
+		description="The screenshot preview should make the interface feel real, modern, and clear from the first glance. Each image reinforces a major app flow."
+		id="screenshots-title"
+	/>
+
+	<div class="screenshots-grid">
+		{shots.map((shot, index) => (
+			<figure class={`shot-card shot-${index + 1}`}>
+				<img
+					src={shot.src.src}
+					alt={shot.alt}
+					width={shot.src.width}
+					height={shot.src.height}
+					loading="lazy"
+					decoding="async"
+				/>
+				<figcaption>{shot.title}</figcaption>
+			</figure>
+		))}
+	</div>
+</section>
+
+<style>
+	.section-block {
+		width: min(var(--wf-content-width), calc(100% - var(--wf-space-6)));
+		margin: 0 auto;
+		display: grid;
+		gap: var(--wf-space-6);
+	}
+
+	.screenshots-grid {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: var(--wf-space-4);
+	}
+
+	.shot-card {
+		grid-column: span 12;
+		margin: 0;
+		padding: var(--wf-space-3);
+		border-radius: var(--wf-radius-card);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(249, 253, 255, 0.92) 100%);
+		border: 1px solid rgba(13, 138, 223, 0.12);
+		box-shadow: 0 14px 34px rgba(4, 40, 61, 0.08);
+		display: grid;
+		gap: var(--wf-space-3);
+		animation: section-stagger var(--wf-motion-slow) var(--wf-ease-standard) both;
+	}
+
+	.shot-card img {
+		width: 100%;
+		height: auto;
+		border-radius: calc(var(--wf-radius-card) - 0.6rem);
+		background: #111827;
+		box-shadow: 0 10px 24px rgba(4, 40, 61, 0.14);
+	}
+
+	.shot-card figcaption {
+		font-size: 0.86rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--wf-color-brand-deep);
+		padding: 0 0.15rem 0.1rem;
+	}
+
+	@media (min-width: 720px) {
+		.shot-card {
+			grid-column: span 6;
+		}
+	}
+
+	@media (min-width: 1080px) {
+		.shot-card {
+			grid-column: span 4;
+		}
+
+		.shot-1,
+		.shot-2 {
+			grid-column: span 6;
+		}
+
+		.shot-3,
+		.shot-4,
+		.shot-5,
+		.shot-6,
+		.shot-7 {
+			grid-column: span 4;
+		}
+	}
+</style>

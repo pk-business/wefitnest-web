@@ -1,0 +1,94 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+const faqs = [
+	{
+		question: 'Is WeFitNest beginner friendly?',
+		answer:
+			'Yes. The setup and guided workout structure are meant to make the first week feel clear, not overwhelming.',
+	},
+	{
+		question: 'Does the app help with workout pacing?',
+		answer:
+			'Yes. Rest timer support and session flow keep workouts moving with a consistent rhythm.',
+	},
+	{
+		question: 'Can I track meals too?',
+		answer:
+			'Yes. Nutrition logging is part of the core flow so training and recovery can be viewed together.',
+	},
+	{
+		question: 'What does the progress view show?',
+		answer:
+			'Charts focus on completion, training trends, and the habits that help you stay consistent over time.',
+	},
+	{
+		question: 'Will the app still feel clean on iPhone screens?',
+		answer:
+			'The layout is designed mobile-first, with dense content broken into clear cards and readable spacing on narrow screens.',
+	},
+];
+---
+
+<section id="faq" class="section-block faq-block" aria-labelledby="faq-title">
+	<SectionHeader
+		kicker="FAQ"
+		title="Questions people ask before they commit."
+		description="Keep the language direct and reassuring so the page feels practical instead of promotional."
+		id="faq-title"
+	/>
+
+	<div class="faq-list">
+		{faqs.map((item) => (
+			<details class="faq-item">
+				<summary>{item.question}</summary>
+				<p>{item.answer}</p>
+			</details>
+		))}
+	</div>
+</section>
+
+<style>
+	.section-block {
+		width: min(var(--wf-content-width), calc(100% - var(--wf-space-6)));
+		margin: 0 auto;
+		display: grid;
+		gap: var(--wf-space-6);
+	}
+
+	.faq-list {
+		display: grid;
+		gap: var(--wf-space-3);
+	}
+
+	.faq-item {
+		padding: var(--wf-space-4) var(--wf-space-5);
+		border-radius: var(--wf-radius-card);
+		background: rgba(255, 255, 255, 0.88);
+		border: 1px solid rgba(13, 138, 223, 0.12);
+		box-shadow: 0 12px 30px rgba(4, 40, 61, 0.06);
+	}
+
+	summary {
+		cursor: pointer;
+		font-size: 1rem;
+		font-weight: 800;
+		color: var(--wf-color-text);
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	p {
+		margin-top: var(--wf-space-3);
+		line-height: 1.7;
+		color: var(--wf-color-text-muted);
+	}
+
+	details[open] {
+		box-shadow: 0 16px 36px rgba(4, 40, 61, 0.1);
+		border-color: rgba(13, 138, 223, 0.18);
+	}
+</style>

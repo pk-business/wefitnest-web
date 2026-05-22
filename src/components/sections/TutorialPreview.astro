@@ -1,0 +1,171 @@
+---
+import SectionHeader from './SectionHeader.astro';
+
+const steps = [
+	{
+		title: 'Onboarding and setup',
+		purpose: 'Create your profile, pick your training goal, and set up the baseline the app should use.',
+		benefit: 'You start with a plan that reflects your current routine instead of a generic template.',
+		steps: ['Choose your goal', 'Confirm your schedule', 'Review the starter plan'],
+		tips: 'Keep the first setup honest. Accurate inputs make the plan more useful.',
+	},
+	{
+		title: 'Workout planning and builder',
+		purpose: 'Assemble sessions or weekly blocks that reflect the body parts, equipment, and training style you want.',
+		benefit: 'You can train with structure while still adjusting the session to fit the day.',
+		steps: ['Open the builder', 'Add movements or templates', 'Save the plan to your weekly schedule'],
+		tips: 'Use the builder to keep your best session patterns reusable.',
+	},
+	{
+		title: 'In-session workout flow',
+		purpose: 'Run the session with exercise order, set tracking, and quick edits available while you train.',
+		benefit: 'You spend less time navigating and more time completing the workout.',
+		steps: ['Start today’s workout', 'Log each set', 'Adjust load or reps as needed'],
+		tips: 'Log each set immediately so the session stays accurate.',
+	},
+	{
+		title: 'Rest timer and pacing support',
+		purpose: 'Time intervals between sets and keep the session moving at a controlled pace.',
+		benefit: 'You reduce guesswork and protect the quality of each rep.',
+		steps: ['Launch the rest timer', 'Follow the pacing cue', 'Resume when the timer ends'],
+		tips: 'Use the same timer rhythm across your workout to stay consistent.',
+	},
+	{
+		title: 'Nutrition tracking and meal logging',
+		purpose: 'Capture meals and nutrition notes so recovery and training habits stay connected.',
+		benefit: 'You can spot patterns across training, food, and energy without juggling another app.',
+		steps: ['Open meal logging', 'Add the meal or snack', 'Review patterns later in the week'],
+		tips: 'Short, accurate entries are better than delayed perfect logs.',
+	},
+	{
+		title: 'Progress charts and settings',
+		purpose: 'Review progress trends and keep the app tuned to your profile, preferences, and goals.',
+		benefit: 'You can adapt your plan based on real progress instead of memory.',
+		steps: ['Check charts and streaks', 'Review trends', 'Update profile or settings'],
+		tips: 'Revisit settings when your routine changes so the plan stays relevant.',
+	},
+];
+---
+
+<section id="tutorial" class="section-block tutorial-block" aria-labelledby="tutorial-title">
+	<SectionHeader
+		kicker="Tutorial preview"
+		title="Follow the flow from setup to progress review."
+		description="This is the practical path the site should explain: start with setup, build workouts, train with pacing, log nutrition, and review the numbers that matter."
+		id="tutorial-title"
+	/>
+
+	<div class="tutorial-grid">
+		{steps.map((step, index) => (
+			<article class={`tutorial-card tutorial-card-${index + 1}`}>
+				<div class="card-top">
+					<span>Step {index + 1}</span>
+					<strong>{step.title}</strong>
+				</div>
+				<p class="purpose"><strong>What it does:</strong> {step.purpose}</p>
+				<p class="benefit"><strong>Why it matters:</strong> {step.benefit}</p>
+				<div class="step-list">
+					<p class="mini-heading">How to use it</p>
+					<ol>
+						{step.steps.map((item) => <li>{item}</li>)}
+					</ol>
+				</div>
+				<p class="tip"><strong>Tip:</strong> {step.tips}</p>
+			</article>
+		))}
+	</div>
+</section>
+
+<style>
+	.section-block {
+		width: min(var(--wf-content-width), calc(100% - var(--wf-space-6)));
+		margin: 0 auto;
+		display: grid;
+		gap: var(--wf-space-6);
+	}
+
+	.tutorial-grid {
+		display: grid;
+		gap: var(--wf-space-4);
+	}
+
+	.tutorial-card {
+		padding: var(--wf-space-5);
+		border-radius: var(--wf-radius-card);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(246, 252, 255, 0.88) 100%);
+		border: 1px solid rgba(13, 138, 223, 0.12);
+		box-shadow: 0 16px 36px rgba(4, 40, 61, 0.08);
+		display: grid;
+		gap: var(--wf-space-3);
+		position: relative;
+		overflow: clip;
+		animation: section-stagger var(--wf-motion-slow) var(--wf-ease-standard) both;
+	}
+
+	.tutorial-card::before {
+		content: '';
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: 0.35rem;
+		background: var(--wf-gradient-brand);
+	}
+
+	.card-top {
+		display: grid;
+		gap: var(--wf-space-1);
+	}
+
+	.card-top span {
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--wf-color-brand-deep);
+	}
+
+	.card-top strong {
+		font-size: 1.2rem;
+		line-height: 1.25;
+	}
+
+	p {
+		line-height: 1.65;
+		color: var(--wf-color-text-muted);
+	}
+
+	strong {
+		color: var(--wf-color-text);
+	}
+
+	.mini-heading {
+		margin: 0;
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--wf-color-brand-deep);
+	}
+
+	ol {
+		margin: 0;
+		padding-left: 1.2rem;
+		display: grid;
+		gap: var(--wf-space-2);
+	}
+
+	li {
+		color: var(--wf-color-text);
+	}
+
+	@media (min-width: 760px) {
+		.tutorial-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 1120px) {
+		.tutorial-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+</style>
