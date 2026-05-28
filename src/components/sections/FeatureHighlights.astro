@@ -1,30 +1,38 @@
 ---
 import SectionHeader from './SectionHeader.astro';
+import imgAdaptivePlans from '../../assets/img/adaptive-plans.jpg';
+import imgSmartPacing from '../../assets/img/smart-pacing.jpg';
+import imgProgressSignals from '../../assets/img/progress-signals.jpg';
+import imgRecoveryLogging from '../../assets/img/recovery-logging.jpg';
 
 const features = [
 	{
-		title: 'Guided workout planning',
-		description:
-			'Build structured sessions that adapt to your schedule and training focus without losing momentum.',
-			tips: ['Set your weekly split', 'Pick the target focus', 'Review the plan before training'],
+		title: 'Adaptive Plans',
+		description: 'Daily workouts recalibrate around your energy, recovery, and available time.',
+		icon: 'path',
+		img: imgAdaptivePlans,
+		imgSide: 'right',
 	},
 	{
-		title: 'Rest timer and pacing',
-		description:
-			'Keep rest periods intentional so the session stays efficient and your effort stays consistent.',
-		tips: ['Start the timer on each set', 'Use the pacing cue', 'Resume when you are ready'],
+		title: 'Smart Pacing',
+		description: 'Rest intervals stay intentional so every set keeps quality and rhythm.',
+		icon: 'clock',
+		img: imgSmartPacing,
+		imgSide: 'left',
 	},
 	{
-		title: 'Progress charts and trends',
-		description:
-			'Track completion, volume, and consistency so you can see progress without manually building a spreadsheet.',
-		tips: ['Check the weekly view', 'Compare current and past loads', 'Use trends to adjust training'],
+		title: 'Progress Signals',
+		description: 'Clarity-focused charts reveal momentum, not noise, across each training week.',
+		icon: 'chart',
+		img: imgProgressSignals,
+		imgSide: 'right',
 	},
 	{
-		title: 'Nutrition tracking and logging',
-		description:
-			'Capture meals with a quick log flow that supports better recovery and a more complete picture of your day.',
-		tips: ['Log meals soon after eating', 'Keep entries simple', 'Review intake patterns weekly'],
+		title: 'Recovery Logging',
+		description: 'Lightweight meal and habit logs connect nutrition to performance outcomes.',
+		icon: 'spark',
+		img: imgRecoveryLogging,
+		imgSide: 'left',
 	},
 ];
 ---
@@ -39,13 +47,53 @@ const features = [
 
 	<div class="feature-grid">
 		{features.map((feature, index) => (
-			<article class={`feature-card feature-${index + 1}`}>
-				<p class="card-index">0{index + 1}</p>
-				<h3>{feature.title}</h3>
-				<p class="card-copy">{feature.description}</p>
-				<ul>
-					{feature.tips.map((tip) => <li>{tip}</li>)}
-				</ul>
+			<article
+				class={`feature-card feature-${index + 1} img-${feature.imgSide}`}
+				data-reveal
+				data-parallax="4"
+			>
+				<div class="card-content">
+					<span class="icon-wrap" aria-hidden="true">
+						{feature.icon === 'path' && (
+							<svg viewBox="0 0 24 24" role="img" focusable="false">
+								<path d="M4 18c5 0 5-12 10-12 2.2 0 3.4 1.3 6 1.3" />
+								<circle cx="4" cy="18" r="2" />
+								<circle cx="14" cy="6" r="2" />
+							</svg>
+						)}
+						{feature.icon === 'clock' && (
+							<svg viewBox="0 0 24 24" role="img" focusable="false">
+								<circle cx="12" cy="12" r="8" />
+								<path d="M12 8v5l3 2" />
+							</svg>
+						)}
+						{feature.icon === 'chart' && (
+							<svg viewBox="0 0 24 24" role="img" focusable="false">
+								<path d="M5 17V9" />
+								<path d="M11 17V6" />
+								<path d="M17 17v-4" />
+								<path d="M3 19h18" />
+							</svg>
+						)}
+						{feature.icon === 'spark' && (
+							<svg viewBox="0 0 24 24" role="img" focusable="false">
+								<path d="M12 3l1.8 4.8L19 9.6l-4.3 2.8L16.2 18 12 15.3 7.8 18l1.5-5.6L5 9.6l5.2-1.8z" />
+							</svg>
+						)}
+					</span>
+					<h3>{feature.title}</h3>
+					<p class="card-copy">{feature.description}</p>
+				</div>
+				<div class="card-img-wrap" aria-hidden="true">
+					<img
+						src={feature.img.src}
+						alt=""
+						width={feature.img.width}
+						height={feature.img.height}
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
 			</article>
 		))}
 	</div>
@@ -56,83 +104,132 @@ const features = [
 		width: min(var(--wf-content-width), calc(100% - var(--wf-space-6)));
 		margin: 0 auto;
 		display: grid;
-		gap: var(--wf-space-6);
+		gap: var(--wf-space-8);
 	}
 
 	.feature-grid {
 		display: grid;
-		grid-template-columns: repeat(12, minmax(0, 1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: var(--wf-space-4);
 	}
 
+	/* ── Card base ─────────────────────────────────────────────────── */
 	.feature-card {
-		grid-column: span 12;
+		grid-column: span 1;
 		padding: var(--wf-space-5);
 		border-radius: var(--wf-radius-card);
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 253, 255, 0.86) 100%);
-		border: 1px solid rgba(13, 138, 223, 0.12);
-		box-shadow: 0 16px 36px rgba(4, 40, 61, 0.08);
+		background: var(--wf-color-surface);
+		backdrop-filter: blur(16px);
+		border: 1px solid var(--wf-color-border);
+		box-shadow: var(--wf-shadow-soft);
+		overflow: hidden;
+
+		/* Content + image side by side */
+		display: flex;
+		align-items: center;
+		gap: var(--wf-space-4);
+		position: relative;
+	}
+
+	/* Image on right: content first, image second */
+	.feature-card.img-right {
+		flex-direction: row;
+	}
+
+	/* Image on left: image first, content second */
+	.feature-card.img-left {
+		flex-direction: row-reverse;
+	}
+
+	/* ── Text content ──────────────────────────────────────────────── */
+	.card-content {
+		flex: 1 1 0;
+		min-width: 0;
 		display: grid;
 		gap: var(--wf-space-3);
-		position: relative;
-		overflow: clip;
-		animation: section-stagger var(--wf-motion-slow) var(--wf-ease-standard) both;
-	}
-
-	.feature-card::before {
-		content: '';
-		position: absolute;
-		inset: 0 auto auto 0;
-		width: 100%;
-		height: 0.35rem;
-		background: var(--wf-gradient-brand);
-	}
-
-	.card-index {
-		margin: 0;
-		font-size: 0.78rem;
-		font-weight: 800;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: var(--wf-color-brand-deep);
 	}
 
 	h3 {
-		font-size: 1.35rem;
-		line-height: 1.15;
+		font-size: 1.2rem;
+		line-height: 1.2;
 	}
 
 	.card-copy {
 		color: var(--wf-color-text-muted);
-		line-height: 1.65;
+		line-height: 1.6;
+		font-size: 0.9rem;
 	}
 
-	ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
+	/* ── Icon ──────────────────────────────────────────────────────── */
+	.icon-wrap {
 		display: grid;
-		gap: var(--wf-space-2);
+		place-items: center;
+		width: 2.6rem;
+		height: 2.6rem;
+		border-radius: 0.85rem;
+		background: rgba(255, 255, 255, 0.08);
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		flex-shrink: 0;
 	}
 
-	li {
-		padding: 0.75rem 0.9rem;
-		border-radius: 0.95rem;
-		background: rgba(13, 138, 223, 0.06);
-		border: 1px solid rgba(13, 138, 223, 0.12);
-		color: var(--wf-color-text);
-		font-size: 0.95rem;
+	.icon-wrap svg {
+		width: 1.25rem;
+		height: 1.25rem;
+		stroke: var(--wf-color-text);
+		fill: none;
+		stroke-width: 1.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 
-	@media (min-width: 720px) {
+	.icon-wrap svg path[fill] {
+		fill: rgba(255, 255, 255, 0.9);
+		stroke: none;
+	}
+
+	/* ── Feature image ─────────────────────────────────────────────── */
+	.card-img-wrap {
+		flex: 0 0 38%;
+		max-width: 38%;
+		align-self: stretch;
+		border-radius: calc(var(--wf-radius-card) - 0.35rem);
+		overflow: hidden;
+		position: relative;
+	}
+
+	.card-img-wrap img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		/* Grayscale to match monochrome design language */
+		filter: grayscale(1) brightness(0.72) contrast(1.08);
+		transition: filter 0.4s ease;
+	}
+
+	.feature-card:hover .card-img-wrap img {
+		filter: grayscale(1) brightness(0.88) contrast(1.08);
+	}
+
+	/* ── Mobile: stack vertically, image below text ─────────────────── */
+	@media (max-width: 719px) {
 		.feature-card {
-			grid-column: span 6;
+			grid-column: span 2;
+			flex-direction: column !important;
+		}
+
+		.card-img-wrap {
+			flex: none;
+			max-width: 100%;
+			width: 100%;
+			height: 10rem;
+			border-radius: calc(var(--wf-radius-card) - 0.35rem);
 		}
 	}
 
-	@media (min-width: 1080px) {
+	@media (prefers-reduced-motion: reduce) {
 		.feature-card {
-			grid-column: span 3;
+			transform: none !important;
 		}
 	}
 </style>

@@ -1,115 +1,267 @@
 ---
 import SectionHeader from './SectionHeader.astro';
-import onboarding from '../../assets/screenshot/onboarding-01.png';
-import workoutBuilder from '../../assets/screenshot/workout-builder-01.png';
-import workoutSession from '../../assets/screenshot/workout-session-01.png';
-import restTimer from '../../assets/screenshot/rest-timer-01.png';
-import nutritionLog from '../../assets/screenshot/nutrition-log-01.png';
-import progressCharts from '../../assets/screenshot/progress-charts-01.png';
-import settingsProfile from '../../assets/screenshot/settings-profile-01.png';
+import img0 from '../../assets/screenshot/onboarding-01.png';
+import img1 from '../../assets/screenshot/workout-builder-01.png';
+import img2 from '../../assets/screenshot/workout-session-01.png';
+import img3 from '../../assets/screenshot/rest-timer-01.png';
+import img4 from '../../assets/screenshot/nutrition-log-01.png';
+import img5 from '../../assets/screenshot/progress-charts-01.png';
+import img6 from '../../assets/screenshot/settings-profile-01.png';
+import img7 from '../../assets/screenshot/home-dashboard-01.png';
+import img8 from '../../assets/screenshot/hero-preview-01.png';
+import img9 from '../../assets/screenshot/meal-planning-01.png';
 
+const total = 10;
 const shots = [
-	{ src: onboarding, alt: 'WeFitNest onboarding screenshot placeholder showing the setup flow', title: 'Onboarding' },
-	{ src: workoutBuilder, alt: 'WeFitNest workout builder screenshot placeholder showing exercise planning', title: 'Workout Builder' },
-	{ src: workoutSession, alt: 'WeFitNest in-session workout screenshot placeholder showing the current workout', title: 'Workout Session' },
-	{ src: restTimer, alt: 'WeFitNest rest timer screenshot placeholder showing pacing support', title: 'Rest Timer' },
-	{ src: nutritionLog, alt: 'WeFitNest nutrition logging screenshot placeholder showing meal tracking', title: 'Nutrition Log' },
-	{ src: progressCharts, alt: 'WeFitNest progress charts screenshot placeholder showing trend analytics', title: 'Progress Charts' },
-	{ src: settingsProfile, alt: 'WeFitNest profile and settings screenshot placeholder showing account controls', title: 'Settings' },
+	{ src: img0, alt: 'Onboarding flow' },
+	{ src: img1, alt: 'Workout builder' },
+	{ src: img2, alt: 'Active workout session' },
+	{ src: img3, alt: 'Rest timer' },
+	{ src: img4, alt: 'Nutrition log' },
+	{ src: img5, alt: 'Progress charts' },
+	{ src: img6, alt: 'Settings & profile' },
+	{ src: img7, alt: 'Home dashboard' },
+	{ src: img8, alt: 'App overview' },
+	{ src: img9, alt: 'Meal planning' },
 ];
 ---
 
 <section id="screenshots" class="section-block screenshots-block" aria-labelledby="screenshots-title">
 	<SectionHeader
-		kicker="Visual proof"
-		title="Show the product, not just the promise."
-		description="The screenshot preview should make the interface feel real, modern, and clear from the first glance. Each image reinforces a major app flow."
+		kicker="App preview"
+		title="Your training cockpit, framed with absolute clarity."
+		description="A calm, high-contrast interface that keeps focus where it belongs: the workout in front of you."
 		id="screenshots-title"
+		center={true}
 	/>
 
-	<div class="screenshots-grid">
-		{shots.map((shot, index) => (
-			<figure class={`shot-card shot-${index + 1}`}>
-				<img
-					src={shot.src.src}
-					alt={shot.alt}
-					width={shot.src.width}
-					height={shot.src.height}
-					loading="lazy"
-					decoding="async"
-				/>
-				<figcaption>{shot.title}</figcaption>
-			</figure>
-		))}
-	</div>
+	<figure class="phone-stage" data-reveal data-carousel>
+		<div class="carousel-stage">
+			<div class="slider-track">
+				<div class="slider-item" data-index="0" aria-hidden="false" style="--item-angle: 0"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img0.src} alt="Onboarding flow" width={img0.width} height={img0.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="1" aria-hidden="true" style="--item-angle: 36"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img1.src} alt="Workout builder" width={img1.width} height={img1.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="2" aria-hidden="true" style="--item-angle: 72"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img2.src} alt="Active workout session" width={img2.width} height={img2.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="3" aria-hidden="true" style="--item-angle: 108"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img3.src} alt="Rest timer" width={img3.width} height={img3.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="4" aria-hidden="true" style="--item-angle: 144"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img4.src} alt="Nutrition log" width={img4.width} height={img4.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="5" aria-hidden="true" style="--item-angle: 180"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img5.src} alt="Progress charts" width={img5.width} height={img5.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="6" aria-hidden="true" style="--item-angle: 216"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img6.src} alt="Settings &amp; profile" width={img6.width} height={img6.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="7" aria-hidden="true" style="--item-angle: 252"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img7.src} alt="Home dashboard" width={img7.width} height={img7.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="8" aria-hidden="true" style="--item-angle: 288"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img8.src} alt="App overview" width={img8.width} height={img8.height} loading="lazy" decoding="async" /></div></div>
+				<div class="slider-item" data-index="9" aria-hidden="true" style="--item-angle: 324"><div class="phone-mockup"><div class="phone-notch" aria-hidden="true"></div><img src={img9.src} alt="Meal planning" width={img9.width} height={img9.height} loading="lazy" decoding="async" /></div></div>
+			</div>
+			</div>
+		</div>
+
+		<nav class="carousel-nav" aria-label="Screenshot navigation">
+			<button class="carousel-btn carousel-prev" aria-label="Previous screenshot" type="button">
+				<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 18l-6-6 6-6"/></svg>
+			</button>
+			<div class="carousel-dots" role="tablist" aria-label="Screenshots">
+				{shots.map((shot, index) => (
+					<button
+						class="carousel-dot"
+						role="tab"
+						type="button"
+						aria-label={shot.alt}
+						aria-selected={index === 0 ? 'true' : 'false'}
+						data-dot-index={index}
+					></button>
+				))}
+			</div>
+			<button class="carousel-btn carousel-next" aria-label="Next screenshot" type="button">
+				<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 18l6-6-6-6"/></svg>
+			</button>
+		</nav>
+
+		<figcaption>Swipe or hover to navigate the app screenshots.</figcaption>
+	</figure>
 </section>
 
 <style>
+	/* ── Section wrapper ─────────────────────────────────────────── */
 	.section-block {
 		width: min(var(--wf-content-width), calc(100% - var(--wf-space-6)));
 		margin: 0 auto;
 		display: grid;
-		gap: var(--wf-space-6);
+		gap: var(--wf-space-8);
 	}
 
-	.screenshots-grid {
+	/* Clip any 3D overflow so side cards never push the page layout */
+	.screenshots-block {
+		overflow: hidden;
+	}
+
+	/* ── Figure container ────────────────────────────────────────── */
+	.phone-stage {
+		margin: 0;
 		display: grid;
-		grid-template-columns: repeat(12, minmax(0, 1fr));
+		justify-items: center;
+		gap: 2.5rem;
+		user-select: none;
+	}
+
+	/*
+	 * ── 3D cylinder carousel ──────────────────────────────────────
+	 *
+	 * All cards are positioned at the origin of .slider-track and
+	 * pushed outward with rotateY(itemAngle) translateZ(radius).
+	 * JS continuously rotates .slider-track around the Y-axis which
+	 * spins the whole cylinder — no translateX overflow ever occurs.
+	 */
+	.carousel-stage {
+		perspective: 900px;
+		width: 100%;
+		height: 30rem;
+		position: relative;
+	}
+
+	.slider-track {
+		transform-style: preserve-3d;
+		position: absolute;
+		inset: 0;
+		/* JS overwrites this every rAF frame */
+		transform: rotateY(0deg);
+	}
+
+	.slider-item {
+		/* Cylinder dimensions — overridden at mobile breakpoint */
+		--card-w: 148px;
+		--card-h: 312px;
+		--carousel-r: 290px;
+
+		position: absolute;
+		width: var(--card-w);
+		height: var(--card-h);
+
+		/* Center the card at the track origin, then rotate out */
+		top: 50%;
+		left: 50%;
+		margin-left: calc(var(--card-w) / -2);
+		margin-top: calc(var(--card-h) / -2);
+
+		transform: rotateY(calc(var(--item-angle) * 1deg)) translateZ(var(--carousel-r));
+		backface-visibility: hidden;
+		cursor: pointer;
+	}
+
+	/* ── Phone chrome inside each card ──────────────────────────── */
+	.phone-mockup {
+		width: 100%;
+		height: 100%;
+		padding: 0.36rem;
+		border-radius: 1.6rem;
+		background: linear-gradient(160deg, #d0d0d0 0%, #6a6a6a 100%);
+		box-shadow: 0 24px 48px rgba(0, 0, 0, 0.42);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.phone-notch {
+		position: absolute;
+		top: 0.3rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 3.6rem;
+		height: 0.62rem;
+		border-radius: 0 0 0.6rem 0.6rem;
+		background: #0a0a0a;
+		z-index: 2;
+	}
+
+	.phone-mockup img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		border-radius: 1.3rem;
+		background: #111;
+	}
+
+	/* ── Navigation row ─────────────────────────────────────────── */
+	.carousel-nav {
+		display: flex;
+		align-items: center;
 		gap: var(--wf-space-4);
 	}
 
-	.shot-card {
-		grid-column: span 12;
-		margin: 0;
-		padding: var(--wf-space-3);
-		border-radius: var(--wf-radius-card);
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(249, 253, 255, 0.92) 100%);
-		border: 1px solid rgba(13, 138, 223, 0.12);
-		box-shadow: 0 14px 34px rgba(4, 40, 61, 0.08);
+	.carousel-btn {
 		display: grid;
-		gap: var(--wf-space-3);
-		animation: section-stagger var(--wf-motion-slow) var(--wf-ease-standard) both;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 50%;
+		border: 1px solid var(--wf-color-border);
+		background: rgba(255, 255, 255, 0.07);
+		backdrop-filter: blur(8px);
+		color: var(--wf-color-text);
+		cursor: pointer;
+		transition: background 180ms ease, transform 180ms ease;
 	}
 
-	.shot-card img {
-		width: 100%;
-		height: auto;
-		border-radius: calc(var(--wf-radius-card) - 0.6rem);
-		background: #111827;
-		box-shadow: 0 10px 24px rgba(4, 40, 61, 0.14);
+	.carousel-btn:hover,
+	.carousel-btn:focus-visible {
+		background: rgba(255, 255, 255, 0.16);
+		transform: scale(1.08);
 	}
 
-	.shot-card figcaption {
-		font-size: 0.86rem;
-		font-weight: 800;
-		letter-spacing: 0.08em;
+	.carousel-btn:focus-visible {
+		outline: 2px solid #e0e0e0;
+		outline-offset: 2px;
+	}
+
+	.carousel-btn svg {
+		width: 1rem;
+		height: 1rem;
+		stroke: currentColor;
+		fill: none;
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.carousel-dots {
+		display: flex;
+		gap: 0.45rem;
+		align-items: center;
+	}
+
+	.carousel-dot {
+		width: 0.42rem;
+		height: 0.42rem;
+		border-radius: 50%;
+		border: none;
+		padding: 0;
+		background: rgba(255, 255, 255, 0.28);
+		cursor: pointer;
+		transition: width 0.3s ease, background 0.3s ease;
+	}
+
+	.carousel-dot[aria-selected='true'] {
+		width: 1.5rem;
+		border-radius: 0.25rem;
+		background: rgba(255, 255, 255, 0.86);
+	}
+
+	/* ── Caption ─────────────────────────────────────────────────── */
+	figcaption {
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.09em;
 		text-transform: uppercase;
-		color: var(--wf-color-brand-deep);
-		padding: 0 0.15rem 0.1rem;
+		color: var(--wf-color-text-muted);
+		text-align: center;
 	}
 
-	@media (min-width: 720px) {
-		.shot-card {
-			grid-column: span 6;
-		}
-	}
-
-	@media (min-width: 1080px) {
-		.shot-card {
-			grid-column: span 4;
+	/* ── Mobile: smaller cylinder ────────────────────────────────── */
+	@media (max-width: 600px) {
+		.carousel-stage {
+			height: 20rem;
 		}
 
-		.shot-1,
-		.shot-2 {
-			grid-column: span 6;
-		}
-
-		.shot-3,
-		.shot-4,
-		.shot-5,
-		.shot-6,
-		.shot-7 {
-			grid-column: span 4;
+		.slider-item {
+			--card-w: 112px;
+			--card-h: 236px;
+			--carousel-r: 216px;
 		}
 	}
 </style>

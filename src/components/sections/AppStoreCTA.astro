@@ -1,19 +1,20 @@
 ---
 import appIcon from '../../assets/AppIcon-1024.png';
+
+const year = new Date().getFullYear();
 ---
 
 <section id="app-store" class="section-block app-store-block" aria-labelledby="app-store-title">
 	<div class="cta-card">
 		<div class="cta-copy">
-			<p class="kicker">App Store CTA</p>
-			<h2 id="app-store-title">Train with a system that is built for consistency.</h2>
+			<p class="kicker">Download</p>
+			<h2 id="app-store-title">Ready for the most focused version of your training week?</h2>
 			<p>
-				Open WeFitNest to get a focused plan, a better workout flow, and the feedback loop you
-				need to keep showing up.
+				Install WeFitNest and keep your workouts, pacing, and recovery signals in one elegant flow.
 			</p>
 			<div class="cta-row">
 				<a class="cta cta-primary" href="#">Download on the App Store</a>
-				<a class="cta cta-secondary" href="#screenshots">View screenshots</a>
+				<a class="cta cta-secondary" href="#screenshots">Preview interface</a>
 			</div>
 		</div>
 		<figure class="store-figure">
@@ -28,12 +29,15 @@ import appIcon from '../../assets/AppIcon-1024.png';
 			<figcaption>Built for mobile-first training routines.</figcaption>
 		</figure>
 	</div>
+	<footer class="copyright" aria-label="Site copyright">
+		<p>Copyright {year} wefitnest.com. All rights reserved.</p>
+	</footer>
 </section>
 
 <style>
 	.section-block {
 		width: min(var(--wf-content-width), calc(100% - var(--wf-space-6)));
-		margin: 0 auto;
+		margin: 0 auto var(--wf-space-10);
 		display: grid;
 		gap: var(--wf-space-6);
 	}
@@ -41,9 +45,11 @@ import appIcon from '../../assets/AppIcon-1024.png';
 	.cta-card {
 		padding: clamp(1.2rem, 3vw, 2rem);
 		border-radius: var(--wf-radius-panel);
-		background: linear-gradient(135deg, rgba(11, 101, 180, 0.98) 0%, rgba(16, 169, 198, 0.97) 55%, rgba(54, 225, 173, 0.96) 100%);
-		color: #ffffff;
-		box-shadow: 0 24px 52px rgba(6, 73, 107, 0.24);
+		background: var(--wf-color-surface);
+		backdrop-filter: blur(18px);
+		border: 1px solid var(--wf-color-border);
+		color: var(--wf-color-text);
+		box-shadow: var(--wf-shadow-soft);
 		display: grid;
 		gap: var(--wf-space-5);
 		position: relative;
@@ -53,10 +59,9 @@ import appIcon from '../../assets/AppIcon-1024.png';
 	.cta-card::before {
 		content: '';
 		position: absolute;
-		inset: auto -8% -20% auto;
-		width: 14rem;
-		height: 14rem;
-		background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+		inset: 0;
+		background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+		pointer-events: none;
 	}
 
 	.cta-copy,
@@ -79,23 +84,24 @@ import appIcon from '../../assets/AppIcon-1024.png';
 		padding: 0.42rem 0.88rem;
 		border-radius: var(--wf-radius-pill);
 		font-size: 0.8rem;
-		font-weight: 800;
+		font-weight: 600;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
-		background: rgba(255, 255, 255, 0.16);
-		border: 1px solid rgba(255, 255, 255, 0.22);
+		background: rgba(255, 255, 255, 0.06);
+		color: var(--wf-color-text-muted);
+		border: 1px solid rgba(255, 255, 255, 0.14);
 	}
 
 	h2 {
 		font-size: clamp(1.8rem, 4.5vw, 3rem);
 		line-height: 1;
-		max-width: 13ch;
+		max-width: 16ch;
 	}
 
 	p {
 		max-width: 46ch;
 		line-height: 1.7;
-		color: rgba(255, 255, 255, 0.9);
+		color: var(--wf-color-text-muted);
 	}
 
 	.cta-row {
@@ -110,7 +116,7 @@ import appIcon from '../../assets/AppIcon-1024.png';
 		justify-content: center;
 		padding: 0.92rem 1.25rem;
 		border-radius: var(--wf-radius-pill);
-		font-weight: 800;
+		font-weight: 700;
 		text-decoration: none;
 		transition:
 			transform var(--wf-motion-fast) var(--wf-ease-standard),
@@ -118,14 +124,14 @@ import appIcon from '../../assets/AppIcon-1024.png';
 	}
 
 	.cta-primary {
-		color: var(--wf-color-brand-deep);
-		background: rgba(255, 255, 255, 0.96);
-		box-shadow: 0 14px 30px rgba(4, 40, 61, 0.18);
+		color: #101010;
+		background: linear-gradient(140deg, #f5f5f5 0%, #d6d6d6 100%);
+		box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
 	}
 
 	.cta-secondary {
-		color: #ffffff;
-		border: 1px solid rgba(255, 255, 255, 0.26);
+		color: var(--wf-color-text);
+		border: 1px solid var(--wf-color-border);
 		background: rgba(255, 255, 255, 0.08);
 	}
 
@@ -145,13 +151,14 @@ import appIcon from '../../assets/AppIcon-1024.png';
 		width: 6rem;
 		height: 6rem;
 		border-radius: 1.4rem;
-		box-shadow: 0 18px 32px rgba(4, 40, 61, 0.22);
+		/* filter: grayscale(1); */
+		box-shadow: 0 18px 32px rgba(0, 0, 0, 0.25);
 	}
 
 	.store-figure figcaption {
 		font-size: 0.9rem;
-		font-weight: 700;
-		color: rgba(255, 255, 255, 0.92);
+		font-weight: 600;
+		color: var(--wf-color-text-muted);
 	}
 
 	@media (min-width: 860px) {
@@ -163,5 +170,18 @@ import appIcon from '../../assets/AppIcon-1024.png';
 		.store-figure {
 			justify-self: end;
 		}
+	}
+
+	.copyright {
+		margin-top: var(--wf-space-3);
+		padding: 0 var(--wf-space-2);
+		text-align: center;
+	}
+
+	.copyright p {
+		font-size: 0.82rem;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: rgba(235, 235, 235, 0.9);
 	}
 </style>

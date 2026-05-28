@@ -1,4 +1,8 @@
 ---
+import wallpaperLaptop from '../assets/webAssets/walpaper-laptop.jpeg';
+import wallpaperMobile from '../assets/webAssets/walpaper-mobile.jpeg';
+import ambientAudio from '../assets/webAssets/gym.mp3';
+
 interface Props {
 	title?: string;
 	description?: string;
@@ -16,12 +20,11 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
 			rel="stylesheet"
 		/>
 		<meta name="generator" content={Astro.generator} />
@@ -35,27 +38,122 @@ const {
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 	</head>
-	<body>
+	<body
+		style={`--wf-wallpaper-desktop: url('${wallpaperLaptop.src}'); --wf-wallpaper-mobile: url('${wallpaperMobile.src}');`}
+	>
 		<slot />
+		<audio id="ambient-audio" src={ambientAudio.src} loop autoplay playsinline preload="auto" muted aria-hidden="true"></audio>
+		<button id="audio-toggle" class="audio-toggle" type="button" aria-pressed="true" aria-label="Enable ambient audio">
+			Sound Off
+		</button>
+		<script type="module" src="/slider.js"></script>
+		<script is:inline>
+			const setupExperience = () => {
+				const doc = document;
+				const audio = doc.getElementById('ambient-audio');
+				const toggle = doc.getElementById('audio-toggle');
+				const parallaxItems = Array.from(doc.querySelectorAll('[data-parallax]'));
+				const revealItems = Array.from(doc.querySelectorAll('[data-reveal]'));
+
+				if (audio instanceof HTMLAudioElement && toggle instanceof HTMLButtonElement) {
+					audio.volume = 0.15;
+					// Audio starts muted so the browser allows autoplay.
+					// Clicking the toggle unmutes and begins playback.
+
+					const updateToggle = () => {
+						const muted = audio.muted;
+						toggle.setAttribute('aria-pressed', muted ? 'true' : 'false');
+						toggle.setAttribute('aria-label', muted ? 'Enable ambient audio' : 'Mute ambient audio');
+						toggle.textContent = muted ? 'Sound Off' : 'Sound On';
+					};
+
+					updateToggle();
+
+					toggle.addEventListener('click', () => {
+						if (audio.muted) {
+							audio.muted = false;
+							audio.play().catch(() => {});
+						} else {
+							audio.muted = true;
+						}
+						updateToggle();
+					});
+				}
+
+				if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+					if ('IntersectionObserver' in window && revealItems.length) {
+						const revealObserver = new IntersectionObserver(
+							(entries, observer) => {
+								entries.forEach((entry) => {
+									if (entry.isIntersecting) {
+										entry.target.classList.add('is-visible');
+										observer.unobserve(entry.target);
+									}
+								});
+							},
+							{ threshold: 0.18 }
+						);
+
+						revealItems.forEach((item) => revealObserver.observe(item));
+					}
+
+					if (parallaxItems.length) {
+						let ticking = false;
+
+						const applyParallax = () => {
+							const offset = window.scrollY;
+							parallaxItems.forEach((item) => {
+								const speed = Number(item.getAttribute('data-parallax') || 3);
+								const y = (offset * speed) / 800;
+								item.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`;
+							});
+							ticking = false;
+						};
+
+						window.addEventListener(
+							'scroll',
+							() => {
+								if (!ticking) {
+									window.requestAnimationFrame(applyParallax);
+									ticking = true;
+								}
+							},
+							{ passive: true }
+						);
+
+						applyParallax();
+					}
+
+				} else {
+					revealItems.forEach((item) => item.classList.add('is-visible'));
+				}
+			};
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', setupExperience, { once: true });
+			} else {
+				setupExperience();
+			}
+		</script>
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		--wf-color-bg: #f2fbff;
-		--wf-color-bg-soft: #e8f6fb;
-		--wf-color-surface: rgba(255, 255, 255, 0.68);
-		--wf-color-surface-strong: #ffffff;
-		--wf-color-text: #08283a;
-		--wf-color-text-muted: #406175;
-		--wf-color-brand: #0d8adf;
-		--wf-color-brand-alt: #1cc8b8;
-		--wf-color-brand-deep: #065a97;
-		--wf-color-border: rgba(13, 138, 223, 0.18);
-		--wf-gradient-brand: linear-gradient(120deg, #0c79da 0%, #1ab6cb 52%, #3de1ad 100%);
-		--wf-gradient-ambient: radial-gradient(circle at 15% 20%, #9ae6ff 0%, transparent 46%),
-			radial-gradient(circle at 85% 12%, #9de9d5 0%, transparent 40%),
-			radial-gradient(circle at 50% 100%, #d1f4ff 0%, #f2fbff 50%);
+		--wf-color-bg: #0a0a0a;
+		--wf-color-bg-soft: #131313;
+		--wf-color-surface: linear-gradient(170deg, rgba(46, 46, 46, 0.36) 0%, rgba(19, 19, 19, 0.28) 100%);
+		--wf-color-surface-strong: rgba(24, 24, 24, 0.78);
+		--wf-color-text: #f3f3f3;
+		--wf-color-text-muted: #c6c6c6;
+		--wf-color-brand: #d7d7d7;
+		--wf-color-brand-alt: #ededed;
+		--wf-color-brand-deep: #a6a6a6;
+		--wf-color-border: rgba(255, 255, 255, 0.16);
+		--wf-gradient-brand: linear-gradient(140deg, #f2f2f2 0%, #bfbfbf 100%);
+		--wf-gradient-ambient: radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.1) 0%, transparent 42%),
+			radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.06) 0%, transparent 38%),
+			radial-gradient(circle at 50% 110%, rgba(255, 255, 255, 0.05) 0%, transparent 46%);
 
 		--wf-space-1: 0.25rem;
 		--wf-space-2: 0.5rem;
@@ -75,8 +173,8 @@ const {
 		--wf-radius-card: 1.5rem;
 		--wf-radius-panel: 2rem;
 
-		--wf-shadow-soft: 0 14px 35px rgba(5, 51, 75, 0.12);
-		--wf-shadow-glow: 0 10px 28px rgba(10, 138, 206, 0.28);
+		--wf-shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.35);
+		--wf-shadow-glow: 0 14px 32px rgba(0, 0, 0, 0.3);
 
 		--wf-motion-fast: 180ms;
 		--wf-motion-base: 320ms;
@@ -99,18 +197,25 @@ const {
 	}
 
 	body {
-		font-family: 'Plus Jakarta Sans', sans-serif;
-		background: var(--wf-gradient-ambient);
+		font-family: 'Manrope', sans-serif;
+		background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), var(--wf-wallpaper-current), var(--wf-gradient-ambient);
+		background-position: center, center, center;
+		background-repeat: no-repeat, no-repeat, no-repeat;
+		background-size: cover, cover, cover;
+		background-attachment: fixed, fixed, fixed;
 		background-color: var(--wf-color-bg);
 		color: var(--wf-color-text);
 		line-height: 1.5;
 		overflow-x: hidden;
+		position: relative;
+		isolation: isolate;
+		--wf-wallpaper-current: var(--wf-wallpaper-desktop);
 	}
 
 	h1,
 	h2,
 	h3 {
-		font-family: 'Sora', sans-serif;
+		font-family: 'Space Grotesk', sans-serif;
 		line-height: 1.1;
 		margin: 0;
 	}
@@ -128,8 +233,89 @@ const {
 		max-width: 100%;
 	}
 
-	::selection {
-		background: rgba(13, 138, 223, 0.18);
+	main.homepage-shell {
+		display: grid;
+		gap: var(--wf-section-gap);
+		padding: 0 0 var(--wf-space-10);
+	}
+
+	[data-reveal] {
+		opacity: 0;
+		transform: translate3d(0, 12px, 0);
+		transition:
+			opacity var(--wf-motion-slow) var(--wf-ease-standard),
+			transform var(--wf-motion-slow) var(--wf-ease-standard);
+		will-change: transform, opacity;
+	}
+
+	[data-reveal].is-visible {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+
+	.audio-toggle {
+		position: fixed;
+		right: var(--wf-space-4);
+		bottom: var(--wf-space-4);
+		z-index: 20;
+		border: 1px solid var(--wf-color-border);
+		border-radius: var(--wf-radius-pill);
+		padding: 0.52rem 0.9rem;
+		background: var(--wf-color-surface-strong);
 		color: var(--wf-color-text);
+		backdrop-filter: blur(12px);
+		font-family: 'Manrope', sans-serif;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition:
+			transform var(--wf-motion-fast) var(--wf-ease-standard),
+			background var(--wf-motion-fast) var(--wf-ease-standard);
+	}
+
+	.audio-toggle:hover,
+	.audio-toggle:focus-visible {
+		transform: translateY(-1px);
+		background: rgba(30, 30, 30, 0.9);
+	}
+
+	.audio-toggle:focus-visible {
+		outline: 2px solid #f0f0f0;
+		outline-offset: 2px;
+	}
+
+	::selection {
+		background: rgba(255, 255, 255, 0.24);
+		color: #111111;
+	}
+
+	@media (max-width: 760px) {
+		body {
+			--wf-wallpaper-current: var(--wf-wallpaper-mobile);
+			background-attachment: fixed, fixed, scroll;
+		}
+
+		.audio-toggle {
+			right: var(--wf-space-3);
+			bottom: var(--wf-space-3);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		[data-reveal] {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+
+		.audio-toggle {
+			transition: none;
+		}
 	}
 </style>
