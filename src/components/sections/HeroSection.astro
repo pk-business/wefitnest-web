@@ -1,18 +1,8 @@
 ---
-import logo from '../../assets/webAssets/wefitnest-logo.png';
 ---
 
 <section class="hero-section" aria-labelledby="hero-title">
 	<div class="hero-panel" data-reveal data-parallax="8">
-		<img
-			class="hero-logo"
-			src={logo.src}
-			alt="WeFitNest logo"
-			width={logo.width}
-			height={logo.height}
-			loading="eager"
-			decoding="async"
-		/>
 		<p class="eyebrow">Minimal training intelligence</p>
 		<h1 id="hero-title">A calmer way to build unstoppable fitness momentum.</h1>
 		<p class="lead">
@@ -27,7 +17,7 @@ import logo from '../../assets/webAssets/wefitnest-logo.png';
 
 <style>
 	.hero-section {
-		min-height: 100svh;
+		min-height: 80svh;
 		width: min(var(--wf-content-width), calc(100% - var(--wf-space-5)));
 		margin: 0 auto;
 		display: grid;
@@ -36,7 +26,7 @@ import logo from '../../assets/webAssets/wefitnest-logo.png';
 	}
 
 	.hero-panel {
-		width: min(48rem, 100%);
+		width: 100%;
 		padding: clamp(1.4rem, 4vw, 2.6rem);
 		display: grid;
 		justify-items: center;
@@ -48,11 +38,6 @@ import logo from '../../assets/webAssets/wefitnest-logo.png';
 		border: 1px solid var(--wf-color-border);
 		box-shadow: var(--wf-shadow-soft);
 		animation: hero-load var(--wf-motion-slow) var(--wf-ease-standard) both;
-	}
-
-	.hero-logo {
-		width: min(5.25rem, 23vw);
-		height: auto;
 	}
 
 	.eyebrow {

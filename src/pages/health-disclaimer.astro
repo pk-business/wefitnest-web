@@ -1,0 +1,240 @@
+---
+const title = 'Health & Safety Disclaimer – WeFitNest';
+const description = 'WeFitNest is for general wellness and lifestyle purposes only. It does not provide medical advice, diagnosis, or treatment.';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="WeFitNest" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: #f9f9f9;
+        color: #1a1a1a;
+        line-height: 1.7;
+      }
+
+      header {
+        background: #ffffff;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      header .logo {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #4f46e5;
+        text-decoration: none;
+      }
+
+      header .logo span {
+        color: #1a1a1a;
+      }
+
+      .container {
+        max-width: 760px;
+        margin: 48px auto;
+        padding: 0 24px 64px;
+      }
+
+      .page-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #1a1a1a;
+        margin-bottom: 6px;
+      }
+
+      .updated {
+        font-size: 0.85rem;
+        color: #777;
+        margin-bottom: 32px;
+      }
+
+      .warning-banner {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        border-radius: 6px;
+        padding: 18px 20px;
+        margin-bottom: 36px;
+      }
+
+      .warning-banner .icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        line-height: 1;
+      }
+
+      .warning-banner p {
+        font-size: 0.95rem;
+        color: #92400e;
+        margin-bottom: 0;
+      }
+
+      h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #4f46e5;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #e0e0ff;
+      }
+
+      p {
+        font-size: 0.93rem;
+        color: #333;
+        margin-bottom: 12px;
+      }
+
+      ul {
+        padding-left: 22px;
+        margin-bottom: 12px;
+      }
+
+      ul li {
+        font-size: 0.93rem;
+        color: #333;
+        margin-bottom: 6px;
+      }
+
+      strong {
+        color: #1a1a1a;
+      }
+
+      .policy-link {
+        color: #4f46e5;
+        text-decoration: none;
+      }
+
+      .policy-link:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        text-align: center;
+        padding: 24px;
+        font-size: 0.8rem;
+        color: #aaa;
+        border-top: 1px solid #e8e8e8;
+        margin-top: 48px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <a class="logo" href="/">WeFit<span>Nest</span></a>
+    </header>
+
+    <div class="container">
+
+      <h1 class="page-title">Health &amp; Safety Disclaimer</h1>
+      <p class="updated">Last updated: May 29, 2026</p>
+
+      <div class="warning-banner">
+        <span class="icon">⚠️</span>
+        <p>
+          WeFitNest is for general wellness and lifestyle purposes only.
+          It does <strong>not</strong> provide medical advice, diagnosis, or treatment.
+        </p>
+      </div>
+
+      <p>By using WeFitNest, you acknowledge and agree to the following:</p>
+
+      <h2>1. No Medical Advice</h2>
+      <p>
+        The information provided by the App—including workout suggestions, difficulty scoring, nutrition logs,
+        and any fitness-related guidance—is <strong>for informational and educational purposes only</strong>.
+      </p>
+      <p>It should <strong>not</strong> be interpreted as:</p>
+      <ul>
+        <li>Medical advice</li>
+        <li>A substitute for professional healthcare</li>
+        <li>A personalized nutrition or exercise prescription</li>
+      </ul>
+      <p>
+        Always consult a qualified physician or healthcare provider before beginning any exercise, diet, or fitness program.
+      </p>
+
+      <h2>2. Physical Activity Risks</h2>
+      <p>Engaging in physical activity carries inherent risks. By using the App, you confirm that:</p>
+      <ul>
+        <li>You are voluntarily participating in fitness activities</li>
+        <li>You understand the risks of injury, illness, or physical strain</li>
+        <li>You assume full responsibility for your health and safety</li>
+      </ul>
+      <p>
+        If you experience dizziness, fainting, shortness of breath, chest pain, or any discomfort,
+        <strong>stop using the App immediately</strong> and seek medical attention.
+      </p>
+
+      <h2>3. Nutrition Logging Disclaimer</h2>
+      <p>
+        Nutrition information logged or displayed in the App is <strong>not</strong> intended to replace professional dietary advice.
+      </p>
+      <p>You should consult a licensed nutritionist or healthcare provider for:</p>
+      <ul>
+        <li>Personalized meal plans</li>
+        <li>Medical dietary restrictions</li>
+        <li>Weight-loss or weight-gain programs</li>
+        <li>Food allergies or intolerances</li>
+      </ul>
+
+      <h2>4. Accuracy of Information</h2>
+      <p>While we strive to provide accurate and helpful information, WeFitNest:</p>
+      <ul>
+        <li>May not reflect your individual health needs</li>
+        <li>May not account for medical conditions, injuries, or limitations</li>
+        <li>Does not guarantee the accuracy of nutrition or fitness data</li>
+      </ul>
+      <p>
+        You are responsible for evaluating whether the App's recommendations are appropriate for your personal situation.
+      </p>
+
+      <h2>5. Use at Your Own Risk</h2>
+      <p>
+        You agree that your use of WeFitNest is <strong>at your own risk</strong>.
+        WeFitNest and its creators are not liable for:
+      </p>
+      <ul>
+        <li>Injuries</li>
+        <li>Health complications</li>
+        <li>Damages arising from the use or misuse of the App</li>
+      </ul>
+
+      <h2>6. Consult a Professional</h2>
+      <p>For any questions regarding your health, fitness level, or nutrition needs, always consult:</p>
+      <ul>
+        <li>A physician</li>
+        <li>A licensed dietitian</li>
+        <li>A certified fitness professional</li>
+      </ul>
+
+    </div>
+
+    <footer>
+      &copy; 2026 WeFitNest. All rights reserved. &nbsp;|&nbsp;
+      <a class="policy-link" href="/privacy-policy">Privacy Policy</a>
+      &nbsp;|&nbsp;
+      <a class="policy-link" href="/terms-of-use">Terms of Use</a>
+    </footer>
+
+  </body>
+</html>

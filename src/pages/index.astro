@@ -1,19 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import HeroSection from '../components/sections/HeroSection.astro';
 import FeatureHighlights from '../components/sections/FeatureHighlights.astro';
 import ScreenshotsPreview from '../components/sections/ScreenshotsPreview.astro';
 import AppStoreCTA from '../components/sections/AppStoreCTA.astro';
+import FooterCTA from '../components/sections/FooterCTA.astro';
 ---
 
 <Layout
 	title="WeFitNest | Build Momentum Every Day"
 	description="Build strength, consistency, and confidence with guided workout flows, smart plans, and progress tracking inside WeFitNest."
 >
+	<SiteHeader />
 	<main class="homepage-shell">
 		<HeroSection />
 		<FeatureHighlights />
 		<ScreenshotsPreview />
 		<AppStoreCTA />
+		<FooterCTA />
 	</main>
 </Layout>
