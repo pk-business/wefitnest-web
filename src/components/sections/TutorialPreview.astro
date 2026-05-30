@@ -38,10 +38,10 @@ const steps = [
 				<p class="tip"><strong>Tip:</strong> {step.tips}</p>
 			</article>
 		))}
+	</div>
 
-    <div class="tutorial-footer">
-      <a class="cta cta-secondary" href="/tutorial">Read the full tutorial →</a>
-    </div>
+	<div class="tutorial-footer">
+		<a class="cta cta-secondary" href="/tutorial">Read the full tutorial →</a>
 	</div>
 
 </section>
@@ -141,26 +141,37 @@ const steps = [
 	}
 
 	.tutorial-footer {
-		justify-self: end;
-    .cta {
-      padding: 0.88rem 1.5rem;
-      border-radius: var(--wf-radius-pill);
-      font-weight: 700;
-      text-decoration: none;
-      transition:
-        transform var(--wf-motion-fast) var(--wf-ease-standard),
-        box-shadow var(--wf-motion-fast) var(--wf-ease-standard);
-    }
+		display: flex;
+		justify-content: center;
+	}
 
-    .cta-secondary {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--wf-color-text);
-      border: 1px solid var(--wf-color-border);
-    }
-  }
+	.cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.88rem 1.5rem;
+		border-radius: var(--wf-radius-pill);
+		font-weight: 700;
+		text-decoration: none;
+		transition:
+			transform var(--wf-motion-fast) var(--wf-ease-standard),
+			box-shadow var(--wf-motion-fast) var(--wf-ease-standard);
+	}
+
+	.cta-secondary {
+		background: rgba(255, 255, 255, 0.08);
+		color: var(--wf-color-text);
+		border: 1px solid var(--wf-color-border);
+	}
 
 	.cta:hover,
 	.cta:focus-visible {
 		transform: translateY(-2px);
+	}
+
+	@media (min-width: 760px) {
+		.tutorial-footer {
+			justify-content: flex-end;
+		}
 	}
 </style>

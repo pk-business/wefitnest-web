@@ -22,6 +22,14 @@ const faqs = [
 		question: 'Will the app still feel clean on iPhone screens?',
 		answer: 'The layout is designed mobile-first, with dense content broken into clear cards and readable spacing on narrow screens.',
 	},
+	{
+		question: 'What is Pantry tab in the meal logging?',
+		answer: 'The Pantry tab allows you to manage your food stock and track what you have on hand, share your grocery list, and make meal planning more efficient.',
+	},
+	{
+		question: 'What is the Key button in the exercise tab?',
+		answer: 'This feature lets you save the barcode, Qr code keys in your app. No need to carry the physical cards, just scan and save them for quick access during workouts.',
+	},
 ];
 ---
 
@@ -78,14 +86,12 @@ const faqs = [
 		align-items: center;
 		width: fit-content;
 		padding: 0.42rem 0.88rem;
-		border-radius: var(--wf-radius-pill);
 		font-size: 0.8rem;
 		font-weight: 800;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--wf-color-text-muted);
-		background: rgba(255, 255, 255, 0.08);
-		border: 1px solid var(--wf-color-border);
+		border-bottom: 1px solid var(--wf-color-border);
 	}
 
 	h2 {
@@ -136,7 +142,7 @@ const faqs = [
 		justify-content: space-between;
 		gap: var(--wf-space-3);
 		align-items: center;
-		padding: 0.25rem 0.15rem 0;
+		padding: 4rem 0.15rem 0;
 		flex-wrap: wrap;
 	}
 
