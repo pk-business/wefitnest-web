@@ -1,0 +1,339 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+const steps = [
+	{
+		title: 'Onboarding and setup',
+		purpose: 'Create your profile, pick your training goal, and set up the baseline the app should use.',
+		benefit: 'You start with a plan that reflects your current routine instead of a generic template.',
+		steps: ['Choose your goal', 'Confirm your schedule', 'Review the starter plan'],
+		tip: 'Keep the first setup honest. Accurate inputs make the plan more useful.',
+	},
+	{
+		title: 'Workout planning and builder',
+		purpose: 'Assemble sessions or weekly blocks that reflect the body parts, equipment, and training style you want.',
+		benefit: 'You can train with structure while still adjusting the session to fit the day.',
+		steps: ['Open the builder', 'Add movements or templates', 'Save the plan to your weekly schedule'],
+		tip: 'Use the builder to keep your best session patterns reusable.',
+	},
+	{
+		title: 'In-session workout flow',
+		purpose: 'Run the session with exercise order, set tracking, and quick edits available while you train.',
+		benefit: 'You spend less time navigating and more time completing the workout.',
+		steps: ['Start today\'s workout', 'Log each set', 'Adjust load or reps as needed'],
+		tip: 'Log each set immediately so the session stays accurate.',
+	},
+	{
+		title: 'Rest timer and pacing support',
+		purpose: 'Time intervals between sets and keep the session moving at a controlled pace.',
+		benefit: 'You reduce guesswork and protect the quality of each rep.',
+		steps: ['Launch the rest timer', 'Follow the pacing cue', 'Resume when the timer ends'],
+		tip: 'Use the same timer rhythm across your workout to stay consistent.',
+	},
+	{
+		title: 'Nutrition tracking and meal logging',
+		purpose: 'Capture meals and nutrition notes so recovery and training habits stay connected.',
+		benefit: 'You can spot patterns across training, food, and energy without juggling another app.',
+		steps: ['Open meal logging', 'Add the meal or snack', 'Review patterns later in the week'],
+		tip: 'Short, accurate entries are better than delayed perfect logs.',
+	},
+	{
+		title: 'Progress charts and settings',
+		purpose: 'Review progress trends and keep the app tuned to your profile, preferences, and goals.',
+		benefit: 'You can adapt your plan based on real progress instead of memory.',
+		steps: ['Check charts and streaks', 'Review trends', 'Update profile or settings'],
+		tip: 'Revisit settings when your routine changes so the plan stays relevant.',
+	},
+];
+---
+
+<Layout
+	title="Tutorial – WeFitNest"
+	description="Follow the flow from setup to progress review. A practical walkthrough of every major feature in WeFitNest."
+>
+	<SiteHeader />
+	<main class="tutorial-shell">
+
+		<section class="tutorial-hero" aria-labelledby="tutorial-hero-title">
+			<div class="hero-panel" data-reveal>
+				<p class="eyebrow">Tutorial</p>
+				<h1 id="tutorial-hero-title">Follow the flow from setup to progress review.</h1>
+				<p class="lead">
+					A practical walkthrough of every major feature — start with setup, build workouts, train with pacing, log nutrition, and track the numbers that matter.
+				</p>
+				<a class="cta cta-primary" href="/#app-store">Download App</a>
+			</div>
+		</section>
+
+		<section class="tutorial-steps" aria-label="Tutorial steps">
+			<div class="tutorial-grid">
+				{steps.map((step, index) => (
+					<article class="tutorial-card" data-reveal>
+						<div class="card-top">
+							<span class="step-label">Step {index + 1}</span>
+							<strong class="step-title">{step.title}</strong>
+						</div>
+						<p class="purpose"><strong>What it does:</strong> {step.purpose}</p>
+						<p class="benefit"><strong>Why it matters:</strong> {step.benefit}</p>
+						<div class="step-list">
+							<p class="mini-heading">How to use it</p>
+							<ol>
+								{step.steps.map((item) => <li>{item}</li>)}
+							</ol>
+						</div>
+						<p class="tip"><strong>Tip:</strong> {step.tip}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="tutorial-cta" aria-label="Download call to action">
+			<div class="cta-panel" data-reveal>
+				<p class="eyebrow">Ready to start?</p>
+				<h2>One session is enough to see how it fits.</h2>
+				<div class="cta-row">
+					<a class="cta cta-primary" href="/#app-store">Download on the App Store</a>
+					<a class="cta cta-secondary" href="/">Back to home</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+</Layout>
+
+<style>
+	.tutorial-shell {
+		display: grid;
+		gap: var(--wf-section-gap);
+		padding: 4rem 0 var(--wf-space-16);
+	}
+
+	/* ── Hero ── */
+	.tutorial-hero {
+		min-height: 52svh;
+		width: min(var(--wf-content-width), calc(100% - var(--wf-space-5)));
+		margin: 0 auto;
+		display: grid;
+		place-items: center;
+	}
+
+	.hero-panel {
+		width: min(52rem, 100%);
+		padding: clamp(1.4rem, 4vw, 2.6rem);
+		display: grid;
+		justify-items: center;
+		gap: var(--wf-space-4);
+		text-align: center;
+		border-radius: var(--wf-radius-panel);
+		background: var(--wf-color-surface);
+		backdrop-filter: blur(18px);
+		border: 1px solid var(--wf-color-border);
+		box-shadow: var(--wf-shadow-soft);
+	}
+
+	.eyebrow {
+		display: inline-flex;
+		align-items: center;
+		width: fit-content;
+		padding: 0.42rem 0.86rem;
+		font-weight: 600;
+		font-size: 0.8rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--wf-color-text-muted);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+	}
+
+	h1 {
+		font-size: clamp(1.9rem, 6vw, 3.6rem);
+		line-height: 1;
+		max-width: 16ch;
+		text-wrap: balance;
+		letter-spacing: -0.03em;
+		color: var(--wf-color-text);
+	}
+
+	.lead {
+		font-size: clamp(0.96rem, 2vw, 1.1rem);
+		line-height: 1.7;
+		max-width: 50ch;
+		color: var(--wf-color-text-muted);
+	}
+
+	.cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.92rem 1.5rem;
+		border-radius: var(--wf-radius-pill);
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		text-decoration: none;
+		transition:
+			transform var(--wf-motion-fast) var(--wf-ease-standard),
+			box-shadow var(--wf-motion-fast) var(--wf-ease-standard);
+	}
+
+	.cta-primary {
+		background: linear-gradient(135deg, #2196f3 0%, #00bcd4 60%, #14cba8 100%);
+		color: #111111;
+		box-shadow: var(--wf-shadow-glow);
+	}
+
+	.cta-secondary {
+		background: rgba(255, 255, 255, 0.08);
+		color: var(--wf-color-text);
+		border: 1px solid var(--wf-color-border);
+	}
+
+	.cta:hover,
+	.cta:focus-visible {
+		transform: translateY(-2px) scale(1.01);
+		box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+	}
+
+	/* ── Steps grid ── */
+	.tutorial-steps {
+		width: min(var(--wf-content-width), calc(100% - var(--wf-space-6)));
+		margin: 0 auto;
+	}
+
+	.tutorial-grid {
+		display: grid;
+		gap: var(--wf-space-4);
+	}
+
+	.tutorial-card {
+		padding: var(--wf-space-5);
+		border-radius: var(--wf-radius-card);
+		background: var(--wf-color-surface);
+		backdrop-filter: blur(18px);
+		border: 1px solid var(--wf-color-border);
+		box-shadow: var(--wf-shadow-soft);
+		display: grid;
+		gap: var(--wf-space-3);
+		position: relative;
+		overflow: clip;
+	}
+
+	.tutorial-card::before {
+		content: '';
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: 0.35rem;
+		background: linear-gradient(180deg, #2196f3 0%, #00bcd4 60%, #14cba8 100%);
+	}
+
+	.card-top {
+		display: grid;
+		gap: var(--wf-space-1);
+	}
+
+	.step-label {
+		font-size: 0.78rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		background: linear-gradient(135deg, #2196f3 0%, #14cba8 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.step-title {
+		font-family: 'Space Grotesk', sans-serif;
+		font-size: 1.2rem;
+		line-height: 1.25;
+		color: var(--wf-color-text);
+	}
+
+	p {
+		line-height: 1.65;
+		color: var(--wf-color-text-muted);
+	}
+
+	strong {
+		color: var(--wf-color-text);
+	}
+
+	.mini-heading {
+		margin: 0;
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--wf-color-text-muted);
+	}
+
+	ol {
+		margin: 0;
+		padding-left: 1.2rem;
+		display: grid;
+		gap: var(--wf-space-2);
+	}
+
+	li {
+		color: var(--wf-color-text);
+	}
+
+	.step-list {
+		display: grid;
+		gap: var(--wf-space-2);
+	}
+
+	/* ── Bottom CTA ── */
+	.tutorial-cta {
+		width: min(var(--wf-content-width), calc(100% - var(--wf-space-5)));
+		margin: 0 auto;
+		display: grid;
+		place-items: center;
+	}
+
+	.cta-panel {
+		width: min(52rem, 100%);
+		padding: clamp(1.4rem, 4vw, 2.6rem);
+		display: grid;
+		justify-items: center;
+		gap: var(--wf-space-4);
+		text-align: center;
+		border-radius: var(--wf-radius-panel);
+		background: var(--wf-color-surface);
+		backdrop-filter: blur(18px);
+		border: 1px solid var(--wf-color-border);
+		box-shadow: var(--wf-shadow-soft);
+	}
+
+	h2 {
+		font-size: clamp(1.6rem, 4vw, 2.8rem);
+		line-height: 1.1;
+		max-width: 18ch;
+		text-wrap: balance;
+		color: var(--wf-color-text);
+	}
+
+	.cta-row {
+		display: flex;
+		gap: var(--wf-space-3);
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	@media (min-width: 760px) {
+		.tutorial-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 1120px) {
+		.tutorial-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.cta {
+			transition: none;
+		}
+	}
+</style>

@@ -1,13 +1,11 @@
 ---
 import appIcon from '../../assets/AppIcon-1024.png';
-
-const year = new Date().getFullYear();
 ---
 
 <section id="app-store" class="section-block app-store-block" aria-labelledby="app-store-title">
 	<div class="cta-card">
 		<div class="cta-copy">
-			<p class="kicker">Download</p>
+			<!-- <p class="kicker">Download</p> -->
 			<h2 id="app-store-title">Ready for the most focused version of your training week?</h2>
 			<p>
 				Install WeFitNest and keep your workouts, pacing, and recovery signals in one elegant flow.
@@ -29,9 +27,6 @@ const year = new Date().getFullYear();
 			<figcaption>Built for mobile-first training routines.</figcaption>
 		</figure>
 	</div>
-	<footer class="copyright" aria-label="Site copyright">
-		<p>Copyright {year} wefitnest.com. All rights reserved.</p>
-	</footer>
 </section>
 
 <style>
@@ -75,7 +70,7 @@ const year = new Date().getFullYear();
 		gap: var(--wf-space-4);
 		max-width: 42rem;
 	}
-
+/* 
 	.kicker {
 		margin: 0;
 		display: inline-flex;
@@ -89,8 +84,8 @@ const year = new Date().getFullYear();
 		text-transform: uppercase;
 		background: rgba(255, 255, 255, 0.06);
 		color: var(--wf-color-text-muted);
-		border: 1px solid rgba(255, 255, 255, 0.14);
-	}
+		border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+	} */
 
 	h2 {
 		font-size: clamp(1.8rem, 4.5vw, 3rem);
@@ -125,7 +120,7 @@ const year = new Date().getFullYear();
 
 	.cta-primary {
 		color: #101010;
-		background: linear-gradient(140deg, #f5f5f5 0%, #d6d6d6 100%);
+		background: linear-gradient(135deg, #2196f3 0%, #00bcd4 60%, #14cba8 100%);
 		box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
 	}
 
@@ -170,18 +165,5 @@ const year = new Date().getFullYear();
 		.store-figure {
 			justify-self: end;
 		}
-	}
-
-	.copyright {
-		margin-top: var(--wf-space-3);
-		padding: 0 var(--wf-space-2);
-		text-align: center;
-	}
-
-	.copyright p {
-		font-size: 0.82rem;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		color: rgba(235, 235, 235, 0.9);
 	}
 </style>

@@ -8,42 +8,7 @@ const steps = [
 		benefit: 'You start with a plan that reflects your current routine instead of a generic template.',
 		steps: ['Choose your goal', 'Confirm your schedule', 'Review the starter plan'],
 		tips: 'Keep the first setup honest. Accurate inputs make the plan more useful.',
-	},
-	{
-		title: 'Workout planning and builder',
-		purpose: 'Assemble sessions or weekly blocks that reflect the body parts, equipment, and training style you want.',
-		benefit: 'You can train with structure while still adjusting the session to fit the day.',
-		steps: ['Open the builder', 'Add movements or templates', 'Save the plan to your weekly schedule'],
-		tips: 'Use the builder to keep your best session patterns reusable.',
-	},
-	{
-		title: 'In-session workout flow',
-		purpose: 'Run the session with exercise order, set tracking, and quick edits available while you train.',
-		benefit: 'You spend less time navigating and more time completing the workout.',
-		steps: ['Start today’s workout', 'Log each set', 'Adjust load or reps as needed'],
-		tips: 'Log each set immediately so the session stays accurate.',
-	},
-	{
-		title: 'Rest timer and pacing support',
-		purpose: 'Time intervals between sets and keep the session moving at a controlled pace.',
-		benefit: 'You reduce guesswork and protect the quality of each rep.',
-		steps: ['Launch the rest timer', 'Follow the pacing cue', 'Resume when the timer ends'],
-		tips: 'Use the same timer rhythm across your workout to stay consistent.',
-	},
-	{
-		title: 'Nutrition tracking and meal logging',
-		purpose: 'Capture meals and nutrition notes so recovery and training habits stay connected.',
-		benefit: 'You can spot patterns across training, food, and energy without juggling another app.',
-		steps: ['Open meal logging', 'Add the meal or snack', 'Review patterns later in the week'],
-		tips: 'Short, accurate entries are better than delayed perfect logs.',
-	},
-	{
-		title: 'Progress charts and settings',
-		purpose: 'Review progress trends and keep the app tuned to your profile, preferences, and goals.',
-		benefit: 'You can adapt your plan based on real progress instead of memory.',
-		steps: ['Check charts and streaks', 'Review trends', 'Update profile or settings'],
-		tips: 'Revisit settings when your routine changes so the plan stays relevant.',
-	},
+	}
 ];
 ---
 
@@ -73,7 +38,12 @@ const steps = [
 				<p class="tip"><strong>Tip:</strong> {step.tips}</p>
 			</article>
 		))}
+
+    <div class="tutorial-footer">
+      <a class="cta cta-secondary" href="/tutorial">Read the full tutorial →</a>
+    </div>
 	</div>
+
 </section>
 
 <style>
@@ -85,15 +55,16 @@ const steps = [
 	}
 
 	.tutorial-grid {
-		display: grid;
+		display: flex;
+    align-items: center;
 		gap: var(--wf-space-4);
 	}
 
 	.tutorial-card {
 		padding: var(--wf-space-5);
-		border-radius: var(--wf-radius-card);
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(246, 252, 255, 0.88) 100%);
-		border: 1px solid rgba(13, 138, 223, 0.12);
+		/* border-radius: var(--wf-radius-card); */
+		/* background: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(246, 252, 255, 0.88) 100%);
+		border: 1px solid rgba(13, 138, 223, 0.12); */
 		box-shadow: 0 16px 36px rgba(4, 40, 61, 0.08);
 		display: grid;
 		gap: var(--wf-space-3);
@@ -165,7 +136,31 @@ const steps = [
 
 	@media (min-width: 1120px) {
 		.tutorial-grid {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
+	}
+
+	.tutorial-footer {
+		justify-self: end;
+    .cta {
+      padding: 0.88rem 1.5rem;
+      border-radius: var(--wf-radius-pill);
+      font-weight: 700;
+      text-decoration: none;
+      transition:
+        transform var(--wf-motion-fast) var(--wf-ease-standard),
+        box-shadow var(--wf-motion-fast) var(--wf-ease-standard);
+    }
+
+    .cta-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--wf-color-text);
+      border: 1px solid var(--wf-color-border);
+    }
+  }
+
+	.cta:hover,
+	.cta:focus-visible {
+		transform: translateY(-2px);
 	}
 </style>
