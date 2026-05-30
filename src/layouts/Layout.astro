@@ -1,7 +1,7 @@
 ---
 import wallpaperLaptop from '../assets/webAssets/walpaper-laptop.jpeg';
 import wallpaperMobile from '../assets/webAssets/walpaper-mobile.jpeg';
-import ambientAudio from '../assets/webAssets/gym.mp3';
+import ambientAudio from '../assets/webAssets/gym.mp3?url';
 
 interface Props {
 	title?: string;
@@ -42,7 +42,7 @@ const {
 		style={`--wf-wallpaper-desktop: url('${wallpaperLaptop.src}'); --wf-wallpaper-mobile: url('${wallpaperMobile.src}');`}
 	>
 		<slot />
-		<audio id="ambient-audio" src={ambientAudio.src} loop autoplay playsinline preload="auto" muted aria-hidden="true"></audio>
+		<audio id="ambient-audio" src={ambientAudio} loop autoplay playsinline preload="auto" muted aria-hidden="true"></audio>
 		<button id="audio-toggle" class="audio-toggle" type="button" aria-pressed="true" aria-label="Enable ambient audio">
 			Sound Off
 		</button>
