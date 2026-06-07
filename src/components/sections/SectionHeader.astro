@@ -20,7 +20,7 @@ const { kicker, title, description, center = false, id } = Astro.props;
 	.section-header {
 		display: grid;
 		gap: var(--wf-space-3);
-		max-width: 44rem;
+		/* max-width: 44rem; */
 		position: relative;
 		z-index: 1;
 	}
@@ -35,15 +35,12 @@ const { kicker, title, description, center = false, id } = Astro.props;
 		margin: 0;
 		display: inline-flex;
 		align-items: center;
-		width: fit-content;
 		padding: 0.4rem 0.85rem;
-		/* border-radius: var(--wf-radius-pill); */
 		font-size: 0.8rem;
 		font-weight: 600;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--wf-color-text-muted);
-		/* background: rgba(255, 255, 255, 0.06); */
 		border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 	}
 

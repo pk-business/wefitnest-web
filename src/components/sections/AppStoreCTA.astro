@@ -37,55 +37,98 @@ import appIcon from '../../assets/AppIcon-1024.png';
 		gap: var(--wf-space-6);
 	}
 
-	.cta-card {
-		padding: clamp(1.2rem, 3vw, 2rem);
-		border-radius: var(--wf-radius-panel);
-		background: var(--wf-color-surface);
-		backdrop-filter: blur(18px);
-		border: 1px solid var(--wf-color-border);
-		color: var(--wf-color-text);
-		box-shadow: var(--wf-shadow-soft);
-		display: grid;
-		gap: var(--wf-space-5);
-		position: relative;
-		overflow: clip;
-	}
+  /* ── Modern CTA Card (Hero‑Panel Style) ─────────────────────────────── */
+.cta-card {
+    padding: clamp(1.2rem, 3vw, 2rem);
+    border-radius: var(--wf-radius-panel);
+    position: relative;
+    overflow: hidden;
 
-	.cta-card::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-		pointer-events: none;
-	}
+    /* Modern glass surface */
+    background: color-mix(in srgb, var(--wf-color-surface) 72%, transparent);
+    backdrop-filter: blur(22px) saturate(1.35);
 
-	.cta-copy,
-	.store-figure {
-		position: relative;
-		z-index: 1;
-	}
+    /* Layered modern shadows */
+    box-shadow:
+      0 4px 12px rgba(0,0,0,0.06),
+      0 12px 32px rgba(0,0,0,0.04);
 
-	.cta-copy {
-		display: grid;
-		gap: var(--wf-space-4);
-		max-width: 42rem;
-	}
-/* 
-	.kicker {
-		margin: 0;
-		display: inline-flex;
-		align-items: center;
-		width: fit-content;
-		padding: 0.42rem 0.88rem;
-		border-radius: var(--wf-radius-pill);
-		font-size: 0.8rem;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		background: rgba(255, 255, 255, 0.06);
-		color: var(--wf-color-text-muted);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-	} */
+    /* border: 1px solid var(--wf-color-border); */
+    color: var(--wf-color-text);
+
+    display: grid;
+    gap: var(--wf-space-5);
+
+    transition:
+      transform 0.6s var(--wf-ease-standard),
+      box-shadow 0.6s var(--wf-ease-standard),
+      border-color 0.6s var(--wf-ease-standard);
+}
+
+/* Ambient light wash */
+.cta-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        120% 120% at 50% -20%,
+        rgba(255,255,255,0.12),
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+/* Gradient edge highlight */
+.cta-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    /* border: 1px solid transparent; */
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.05)
+    ) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Hover micro‑motion */
+.cta-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      0 8px 24px rgba(0,0,0,0.08),
+      0 16px 48px rgba(0,0,0,0.06);
+    border-color: rgba(255,255,255,0.22);
+}
+
+/* Keep your existing layout rules */
+.cta-copy,
+.store-figure {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-copy {
+    display: grid;
+    gap: var(--wf-space-4);
+    max-width: 42rem;
+}
+
+@media (min-width: 860px) {
+    .cta-card {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+    }
+
+    .store-figure {
+        justify-self: end;
+    }
+}
+
 
 	h2 {
 		font-size: clamp(1.8rem, 4.5vw, 3rem);

@@ -40,8 +40,8 @@ const features = [
 <section id="feature-highlights" class="section-block" aria-labelledby="feature-highlights-title">
 	<SectionHeader
 		kicker="Core value"
-		title="Everything is built to make consistency easier."
-		description="The homepage should show that WeFitNest is not just a workout list. It is a structured training system with pacing, tracking, and feedback built into the flow."
+		title="Everything in WeFitNest is designed for one purpose — making consistency effortless."
+		description="Your homepage should instantly show that WeFitNest isn’t just a list of workouts. It’s a structured training system with built‑in pacing, intelligent tracking, and real‑time feedback that guides users through every session."
 		id="feature-highlights-title"
 	/>
 
@@ -113,33 +113,84 @@ const features = [
 		gap: var(--wf-space-4);
 	}
 
-	/* ── Card base ─────────────────────────────────────────────────── */
-	.feature-card {
-		grid-column: span 1;
-		padding: var(--wf-space-5);
-		border-radius: var(--wf-radius-card);
-		background: var(--wf-color-surface);
-		backdrop-filter: blur(16px);
-		border: 1px solid var(--wf-color-border);
-		box-shadow: var(--wf-shadow-soft);
-		overflow: hidden;
+   /* ── Modern Feature Card ─────────────────────────────────────────────── */
+.feature-card {
+    grid-column: span 1;
+    padding: var(--wf-space-5);
+    border-radius: var(--wf-radius-card);
+    position: relative;
+    overflow: hidden;
 
-		/* Content + image side by side */
-		display: flex;
-		align-items: center;
-		gap: var(--wf-space-4);
-		position: relative;
-	}
+    /* Modern glass surface */
+    background: color-mix(in srgb, var(--wf-color-surface) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(1.35);
 
-	/* Image on right: content first, image second */
-	.feature-card.img-right {
-		flex-direction: row;
-	}
+    /* Modern layered shadows */
+    box-shadow:
+      0 3px 8px rgba(0,0,0,0.05),
+      0 12px 28px rgba(0,0,0,0.04);
 
-	/* Image on left: image first, content second */
-	.feature-card.img-left {
-		flex-direction: row-reverse;
-	}
+    /* border: 1px solid var(--wf-color-border); */
+
+    display: flex;
+    align-items: center;
+    gap: var(--wf-space-4);
+
+    transition:
+      transform 0.45s var(--wf-ease-standard),
+      box-shadow 0.45s var(--wf-ease-standard),
+      border-color 0.45s var(--wf-ease-standard);
+}
+
+/* Ambient light wash */
+.feature-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        140% 140% at 50% -20%,
+        rgba(255,255,255,0.14),
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+/* Gradient edge highlight */
+.feature-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.05)
+    ) border-box;
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Hover interaction */
+.feature-card:hover {
+    transform: translateY(-4px) scale(1.015);
+    box-shadow:
+      0 6px 16px rgba(0,0,0,0.06),
+      0 18px 48px rgba(0,0,0,0.05);
+    border-color: rgba(255,255,255,0.22);
+}
+
+/* ── Layout Variants ─────────────────────────────────────────────────── */
+.feature-card.img-right {
+    flex-direction: row;
+}
+
+.feature-card.img-left {
+    flex-direction: row-reverse;
+}
+
 
 	/* ── Text content ──────────────────────────────────────────────── */
 	.card-content {
