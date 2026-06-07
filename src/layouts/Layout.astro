@@ -291,7 +291,7 @@ const {
 		color: #111111;
 	}
 
-	@media (max-width: 760px) {
+	/* @media (max-width: 760px) {
 		body {
 			--wf-wallpaper-current: var(--wf-wallpaper-mobile);
 			background-attachment: fixed, fixed, scroll;
@@ -301,7 +301,28 @@ const {
 			right: var(--wf-space-3);
 			bottom: var(--wf-space-3);
 		}
-	}
+	} */
+   @media (max-width: 760px) {
+  body {
+    /* Use mobile wallpaper variable if needed */
+    --wf-wallpaper-current: none;
+
+    /* Replace image layers with a simple grayscale background */
+    background-image: linear-gradient(#00000080, #00000080);
+    background-color: #111111ca; /* fallback solid color */
+
+    /* Must be scroll for mobile */
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .audio-toggle {
+    right: var(--wf-space-3);
+    bottom: var(--wf-space-3);
+  }
+}
+
 
 	@media (prefers-reduced-motion: reduce) {
 		html {
