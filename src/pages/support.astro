@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import FAQSection from '../components/sections/FAQSection.astro';
+
+---
+
+<Layout
+    title="Support – WeFitNest"
+    description="Get help with WeFitNest. Contact support, browse FAQs, and troubleshoot common issues."
+>
+    <SiteHeader />
+
+    <main class="support-shell">
+
+        <!-- ───────────────── Hero ───────────────── -->
+        <section class="support-hero" aria-labelledby="support-hero-title">
+            <div class="hero-panel" data-reveal>
+                <p class="eyebrow">Support</p>
+                <h1 id="support-hero-title">How can we help?</h1>
+                  <p class="lead">
+                      Explore 
+                      <a href="#faq">FAQ</a> 
+                      or reach out directly. We typically respond within 24–48 hours.
+                  </p>
+                <a class="email" href="mailto:support@wefitnest.com">
+                 <img src="/src/assets/webAssets/email.svg" alt="Email icon" width="32" height="32" />support@wefitnest.com</a>
+            </div>
+        </section>
+
+        <!-- ───────────────── FAQ Section ───────────────── -->
+    <section id="faq" class="support-faq" aria-label="Frequently asked questions">
+        <FAQSection />
+    </section>
+
+        <!-- ───────────────── CTA ───────────────── -->
+        <section class="support-cta" aria-label="Download call to action">
+            <div class="cta-panel" data-reveal>
+                <p class="eyebrow">Need more help?</p>
+                <h2>We’re here to support your training journey.</h2>
+                <div class="cta-row">
+                    <a class="cta cta-primary" href="mailto:support@wefitnest.com">Contact Support</a>
+                    <a class="cta cta-secondary" href="/">Back to home</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</Layout>
+
+<style>
+    .support-shell {
+        display: grid;
+        gap: var(--wf-section-gap);
+        padding: 4rem 0 var(--wf-space-16);
+    }
+
+    /* ── Hero ── */
+    .support-hero {
+        min-height: 52svh;
+        width: min(var(--wf-content-width), calc(100% - var(--wf-space-5)));
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+    }
+
+    .hero-panel {
+        width: min(52rem, 100%);
+        padding: clamp(1.4rem, 4vw, 2.6rem);
+        display: grid;
+        justify-items: center;
+        gap: var(--wf-space-4);
+        text-align: center;
+        border-radius: var(--wf-radius-panel);
+        background: var(--wf-color-surface);
+        backdrop-filter: blur(18px);
+        border: 1px solid var(--wf-color-border);
+        box-shadow: var(--wf-shadow-soft);
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.42rem 0.86rem;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--wf-color-text-muted);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        width: 100%;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: clamp(1.9rem, 6vw, 3.6rem);
+        line-height: 1;
+        max-width: 16ch;
+        text-wrap: balance;
+        letter-spacing: -0.03em;
+        color: var(--wf-color-text);
+    }
+
+    .lead {
+        font-size: clamp(0.96rem, 2vw, 1.1rem);
+        line-height: 1.7;
+        max-width: 50ch;
+        color: var(--wf-color-text-muted);
+    }
+
+    .email {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: clamp(0.96rem, 2vw, 1.1rem);
+        line-height: 1.7;
+        color: var(--wf-color-text-muted);
+    }
+
+    /* ── Bottom CTA ── */
+    .support-cta {
+        width: min(var(--wf-content-width), calc(100% - var(--wf-space-5)));
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+    }
+
+    .cta-panel {
+        width: min(52rem, 100%);
+        padding: clamp(1.4rem, 4vw, 2.6rem);
+        display: grid;
+        justify-items: center;
+        gap: var(--wf-space-4);
+        text-align: center;
+        border-radius: var(--wf-radius-panel);
+        background: var(--wf-color-surface);
+        backdrop-filter: blur(18px);
+        border: 1px solid var(--wf-color-border);
+        box-shadow: var(--wf-shadow-soft);
+    }
+
+    h2 {
+        font-size: clamp(1.6rem, 4vw, 2.8rem);
+        line-height: 1.1;
+        max-width: 18ch;
+        text-wrap: balance;
+        color: var(--wf-color-text);
+    }
+
+    .cta-row {
+        display: flex;
+        gap: var(--wf-space-3);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (min-width: 760px) {
+        .faq-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 1120px) {
+        .faq-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+    .cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.92rem 1.25rem;
+		border-radius: var(--wf-radius-pill);
+		font-weight: 700;
+		text-decoration: none;
+		transition:
+			transform var(--wf-motion-fast) var(--wf-ease-standard),
+			box-shadow var(--wf-motion-fast) var(--wf-ease-standard);
+	}
+
+	.cta-primary {
+		color: #101010;
+		background: linear-gradient(135deg, #2196f3 0%, #00bcd4 60%, #14cba8 100%);
+		box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+	}
+
+	.cta-secondary {
+		color: var(--wf-color-text);
+		border: 1px solid var(--wf-color-border);
+		background: rgba(255, 255, 255, 0.08);
+	}
+</style>
